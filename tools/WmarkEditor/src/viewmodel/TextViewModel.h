@@ -27,11 +27,15 @@ public:
 //methods
 	void SetModel(const std::shared_ptr<TextModel>& spModel);
 
+//commands
+	CommandFunc LoadCommand();
+
 private:
 	PropertyNotification get_notification();
 
 private:
 	std::shared_ptr<TextModel>  m_spModel;
+	std::string filename;
 };
 
 ////////////////////////////////////////////////////////////////////////////////

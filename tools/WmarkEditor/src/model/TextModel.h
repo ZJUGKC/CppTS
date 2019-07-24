@@ -24,6 +24,9 @@ public:
 //properties
 	std::shared_ptr<Fl_Text_Buffer> get_TextBuf() noexcept;
 
+//methods
+	bool Load(std::string str);
+
 private:
 	std::shared_ptr<Fl_Text_Buffer>  m_spBuffer;
 };
