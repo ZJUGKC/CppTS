@@ -3,25 +3,36 @@
 */
 
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef __TEXT_EDITOR_H__
-#define __TEXT_EDITOR_H__
+#ifndef __MAIN_WINDOW_H__
+#define __MAIN_WINDOW_H__
+
+#include "../view/TextEditor.h"
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
 namespace CSL {
 ////////////////////////////////////////////////////////////////////////////////
 
-class TextEditor : public Fl_Text_Editor
+class MainWindow : public Fl_Double_Window
 {
 public:
-	TextEditor(int x, int y, int w, int h, const char* l = 0);
-	~TextEditor() noexcept;
+	MainWindow(int w, int h, const char* t);
+	~MainWindow() noexcept;
+
+//commands
+	void set_LoadCommand(const CommandFunc& cf);
 
 //properties
-	void set_TextBuffer(const std::shared_ptr<Fl_Text_Buffer>& sp);
+	PropertyNotification get_Notification();
 
 private:
-	std::shared_ptr<Fl_Text_Buffer>  m_spBuffer;
+	static void load_cb(Fl_Widget*, void* v);
+
+private:
+	CommandFunc m_cmdFunc;
+
+	std::shared_ptr<TextEditor> m_textEditor;
+	std::shared_ptr<Fl_Menu_Bar> m_menuBar;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,3 +40,4 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 #endif
 ////////////////////////////////////////////////////////////////////////////////
+

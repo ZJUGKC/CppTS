@@ -6,27 +6,23 @@
 
 #include "precomp.h"
 
-#include "TextEditor.h"
+#include "../../common/TextDef.h"
+#include "../MainWindow.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 namespace CSL {
 ////////////////////////////////////////////////////////////////////////////////
 
-//TextEditor
+// MainWindow
 
-TextEditor::TextEditor(int x, int y, int w, int h, const char* l) : Fl_Text_Editor(x, y, w, h, l)
+PropertyNotification MainWindow::get_Notification()
 {
-}
-
-TextEditor::~TextEditor() noexcept
-{
-}
-
-//properties
-void TextEditor::set_TextBuffer(const std::shared_ptr<Fl_Text_Buffer>& sp)
-{
-	m_spBuffer = sp;
-	(*this).buffer(m_spBuffer.get());
+	return [this](uint32_t uID)
+	{
+		if (uID == PROPID_TEXT) {
+			//this->m_textEditor->;
+		}
+	};
 }
 
 ////////////////////////////////////////////////////////////////////////////////
